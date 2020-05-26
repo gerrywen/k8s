@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-order
+      project: mall
+  template:
+    metadata:
+      labels:
+        app: mall-order
+        project: mall
+    spec:
+      containers:
+        - name: item
+          image: hub.gerrywen.com/library/mall/mall-order-server:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dev
+              containerPort: 8089
+              hostPort: 30004
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /mall/order
+              name: order-data
+      volumes:
+        - name: order-data
+          hostPath:
+            path: /tmp/mall/order
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-order-service
+  labels:
+    app: mall-order
+    project: mall
+spec:
+  selector:
+    app: mall-order
+    project: mall
+  ports:
+    - name: dev
+      port: 8089

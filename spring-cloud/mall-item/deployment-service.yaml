@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-item
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-item
+      project: mall
+  template:
+    metadata:
+      labels:
+        app: mall-item
+        project: mall
+    spec:
+      containers:
+        - name: item
+          image: hub.gerrywen.com/library/mall/mall-item-server:v1.2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dev
+              containerPort: 8081
+              hostPort: 30003
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /mall/item
+              name: item-data
+      volumes:
+        - name: item-data
+          hostPath:
+            path: /tmp/mall/item
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-item-service
+  labels:
+    app: mall-item
+    project: mall
+spec:
+  selector:
+    app: mall-item
+    project: mall
+  ports:
+    - name: dev
+      port: 8081

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-config
+      project: mall
+  template:
+    metadata:
+      labels:
+        app: mall-config
+        project: mall
+    spec:
+      containers:
+        - name: config
+          image: hub.gerrywen.com/library/mall/mall-config-server:v1.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dev
+              containerPort: 10011
+              hostPort: 30001
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /mall/config
+              name: config-data
+      volumes:
+        - name: config-data
+          hostPath:
+            path: /tmp/mall/config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-config-service
+  labels:
+    app: mall-config
+    project: mall
+spec:
+  selector:
+    app: mall-config
+    project: mall
+  ports:
+    - name: dev
+      port: 10011
+

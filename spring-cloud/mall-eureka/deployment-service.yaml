@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-eureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-eureka
+      project: mall
+  template:
+    metadata:
+      labels:
+        app: mall-eureka
+        project: mall
+    spec:
+      containers:
+        - name: eureka
+          image: hub.gerrywen.com/library/mall/mall-eureka-server:v1.3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dev
+              containerPort: 10086
+              hostPort: 30002
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /mall/eureka
+              name: eureka-data
+      volumes:
+        - name: eureka-data
+          hostPath:
+            path: /tmp/mall/eureka
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-eureka-service
+  labels:
+    app: mall-eureka
+    project: mall
+spec:
+  selector:
+    app: mall-eureka
+    project: mall
+  ports:
+    - name: dev
+      port: 10086

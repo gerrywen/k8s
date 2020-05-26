@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mall-cloud-svc
+spec:
+  rules:
+    - host: config.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-config-service
+              servicePort: 10011
+
+    - host: eureka.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-eureka-service
+              servicePort: 10086
+
+    - host: item.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-item-service
+              servicePort: 8081
+
+    - host: order.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-order-service
+              servicePort: 8089

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grafana-ingress
+  namespace: grafana
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  rules:
+    - host: www.grafana.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: grafana-grafana
+              servicePort: 3000

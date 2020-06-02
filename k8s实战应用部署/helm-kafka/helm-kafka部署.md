@@ -346,7 +346,7 @@ ingress:
   kubectl get po,svc -n kafka -o wide
   ```
 
-  ![image-20200531203016265](/Users/gerry/Desktop/document/k8s/helm/images/image-20200531203016265.png)
+  ![image-20200531203016265](../images/image-20200531203016265.png)
 
 - ingress查看
 
@@ -369,7 +369,7 @@ ingress:
 
   并配置`Cluster Zookeeper Hosts`为`kafka-zookeeper:2181`，即可将前面部署的kafka集群纳入`kafka-manager`管理当中。
 
-  ![image-20200531210910730](/Users/gerry/Desktop/document/k8s/helm/images/image-20200531210910730.png)
+  ![image-20200531210910730](../images/image-20200531210910730.png)
 
   
 

@@ -1,0 +1,16 @@
+image:
+  repository: zenko/kafka-manager
+  tag: 1.3.3.22
+zkHosts: kafka-zookeeper:2181
+basicAuth:
+  enabled: true
+  username: admin
+  password: admin
+ingress:
+  enabled: true
+  hosts:
+    - km.hongda.com
+  tls:
+    - secretName: hongda-com-tls-secret
+      hosts:
+        - km.hongda.com

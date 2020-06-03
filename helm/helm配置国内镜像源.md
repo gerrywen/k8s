@@ -32,6 +32,14 @@
   ```
 
   ![image-20200531165705127](/Users/gerry/Desktop/document/k8s/helm/images/image-20200531165705127.png)
+  
+- 5.查看 chart values:
+
+  ```shell
+  helm inspect values stable/mysql
+  ```
+
+  
 
 ### helm 配置 chart incubator国内镜像源（推荐）
 

@@ -20,6 +20,30 @@ spec:
               serviceName: mall-eureka-service
               servicePort: 10086
 
+    - host: gateway.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-gateway-service
+              servicePort: 10010
+
+    - host: auth.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-auth-service
+              servicePort: 8087
+
+    - host: user.mall.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: mall-user-service
+              servicePort: 8085
+
     - host: item.mall.com
       http:
         paths:

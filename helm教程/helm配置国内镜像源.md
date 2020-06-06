@@ -31,7 +31,7 @@
   helm search prometheus
   ```
 
-  ![image-20200531165705127](/Users/gerry/Desktop/document/k8s/helm/images/image-20200531165705127.png)
+  ![image-20200531165705127](./images/image-20200531165705127.png)
   
 - 5.查看 chart values:
 
@@ -71,7 +71,7 @@
   helm search stable/kafka-manager 
   ```
 
-  ![image-20200531165822586](/Users/gerry/Desktop/document/k8s/helm/images/image-20200531165822586.png)
+  ![image-20200531165822586](./images/image-20200531165822586.png)
 
 
 

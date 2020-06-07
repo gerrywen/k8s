@@ -155,6 +155,24 @@ mall-gateway-service   gateway.mall.com   10.104.97.57   80      4m52s
 mall-user-service      user.mall.com      10.104.97.57   80      24m
 ```
 
+- 批量移除helm服务
+
+  ```shell
+  helm del --purge mall-user-service mall-gateway-service mall-eureka-service mall-config-service mall-auth-service
+  ```
+
+  
+
+
+
+### 内存运行情况
+
+
+
+![image-20200606125545628](./images/image-20200606125545628.png)
+
+
+
 
 
 ### 笔记(忽略)

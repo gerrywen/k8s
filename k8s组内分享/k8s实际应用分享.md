@@ -14,7 +14,7 @@
 
 - ##### docker-composer
 
-- ##### [swarm messos Kubernetes对比](./聊聊 Swarm Kubernetes Mesos.md)
+- ##### [swarm messos Kubernetes对比](https://github.com/gerrywen/k8s/blob/master/k8s组内分享/聊聊 Swarm Kubernetes Mesos.md)
 
 
 
@@ -28,19 +28,19 @@
 
 ### k8s基础知识点介绍
 
-#### [知识点1：Kubernetes 组件介绍](../Kubernetes教程/01/1-1Kubernetes 组件.md)
+#### [知识点1：Kubernetes 组件介绍](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/01/1-1Kubernetes 组件.md)
 
 
 
-#### [知识点2：Pod](../Kubernetes教程/02/2-1.Kubernetes基础概念.md)
+#### [知识点2：Pod](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/02/2-1.Kubernetes基础概念.md)
 
 
 
-#### [知识点3：Controller](../Kubernetes教程/02/2-1.Kubernetes 基础概念.md)
+#### [知识点3：Controller](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/02/2-1.Kubernetes 基础概念.md)
 
 
 
-#### [知识点4：Deployment](../Kubernetes教程/01/1-2Kubernetes对象.md)
+#### [知识点4：Deployment](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/01/1-2Kubernetes对象.md)
 
 
 
@@ -48,11 +48,11 @@
 
 
 
-#### [知识点6：volume](../Kubernetes教程/7-3.Kubernetes - volume.md.md)
+#### [知识点6：volume](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/7-3.Kubernetes - volume.md.md)
 
 
 
-#### [知识点7：Persistent Volume（pv，pvc）](../Kubernetes教程/7-4.Kubernetes - Persistent Volume.md)
+#### [知识点7：Persistent Volume（pv，pvc）](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/7-4.Kubernetes - Persistent Volume.md)
 
 
 
@@ -64,7 +64,7 @@
 
 ### k8s在微服务中的应用
 
-#### [1.helm使用](../Kubernetes教程/8-1.部署 Helm.md)
+#### [1.helm使用](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/8-1.部署 Helm.md)
 
 
 

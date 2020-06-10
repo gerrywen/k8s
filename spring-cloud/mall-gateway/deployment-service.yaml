@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-gateway
+      project: mall
+  template:
+    metadata:
+      labels:
+        app: mall-gateway
+        project: mall
+    spec:
+      containers:
+        - name: gateway
+          image: hub.gerrywen.com/library/mall/mall-gateway-server:v1.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dev
+              containerPort: 10011
+              hostPort: 30001
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /mall/gateway
+              name: gateway-data
+      volumes:
+        - name: gateway-data
+          hostPath:
+            path: /tmp/mall/gateway
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-gateway-service
+  labels:
+    app: mall-gateway
+    project: mall
+spec:
+  selector:
+    app: mall-gateway
+    project: mall
+  ports:
+    - name: dev
+      port: 10011
+

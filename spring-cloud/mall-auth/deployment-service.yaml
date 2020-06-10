@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-auth
+      project: mall
+  template:
+    metadata:
+      labels:
+        app: mall-auth
+        project: mall
+    spec:
+      containers:
+        - name: auth
+          image: hub.gerrywen.com/library/mall/mall-auth-server:v1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: dev
+              containerPort: 10011
+              hostPort: 30001
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1024Mi
+            requests:
+              cpu: 300m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /mall/auth
+              name: auth-data
+      volumes:
+        - name: auth-data
+          hostPath:
+            path: /tmp/mall/auth
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-auth-service
+  labels:
+    app: mall-auth
+    project: mall
+spec:
+  selector:
+    app: mall-auth
+    project: mall
+  ports:
+    - name: dev
+      port: 10011
+

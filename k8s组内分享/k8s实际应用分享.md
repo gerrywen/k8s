@@ -14,7 +14,7 @@
 
 - ##### docker-composer
 
-- ##### [swarm messos Kubernetes对比](https://github.com/gerrywen/k8s/blob/master/k8s组内分享/聊聊 Swarm Kubernetes Mesos.md)
+- ##### [swarm messos Kubernetes对比](https://github.com/gerrywen/k8s/blob/master/k8s%E7%BB%84%E5%86%85%E5%88%86%E4%BA%AB/%E8%81%8A%E8%81%8A%20Swarm%20Kubernetes%20Mesos%20.md)
 
 
 
@@ -28,19 +28,19 @@
 
 ### k8s基础知识点介绍
 
-#### [知识点1：Kubernetes 组件介绍](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/01/1-1Kubernetes 组件.md)
+#### [知识点1：Kubernetes 组件介绍](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/01/1-1Kubernetes%20%E7%BB%84%E4%BB%B6.md)
 
 
 
-#### [知识点2：Pod](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/02/2-1.Kubernetes基础概念.md)
+#### [知识点2：Pod](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/02/2-1Kubernetes%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.md)
 
 
 
-#### [知识点3：Controller](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/02/2-1.Kubernetes 基础概念.md)
+#### [知识点3：Controller](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/02/2-1Kubernetes%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.md)
 
 
 
-#### [知识点4：Deployment](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/01/1-2Kubernetes对象.md)
+#### [知识点4：Deployment](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/01/1-2Kubernetes%E5%AF%B9%E8%B1%A1.md)
 
 
 
@@ -48,11 +48,11 @@
 
 
 
-#### [知识点6：volume](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/7-3.Kubernetes - volume.md.md)
+#### [知识点6：volume](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/7-3.Kubernetes%20-%20volume.md)
 
 
 
-#### [知识点7：Persistent Volume（pv，pvc）](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/7-4.Kubernetes - Persistent Volume.md)
+#### [知识点7：Persistent Volume（pv，pvc）](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/7-4.Kubernetes%20-%20Persistent%20Volume.md])
 
 
 
@@ -64,7 +64,7 @@
 
 ### k8s在微服务中的应用
 
-#### [1.helm使用](https://github.com/gerrywen/k8s/blob/master/Kubernetes教程/8-1.部署 Helm.md)
+#### [1.helm使用](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/8-1.%E9%83%A8%E7%BD%B2%20Helm.md)
 
 
 

@@ -1,4 +1,4 @@
-# k8s实际应用分享
+# k8s微服务应用（一）
 
 ### 预备知识：
 
@@ -62,38 +62,34 @@
 
 
 
-### k8s在微服务中的应用
+### Kubernetes 包管理器 Helm 
 
 #### [1.helm使用](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/8-1.%E9%83%A8%E7%BD%B2%20Helm.md)
 
 
 
-#### 2.微服务实际部署
+#### 2.普通编写yaml方式部署
 
-- 方式一：通过yaml文件手动部署
-- 方式二：通过helm自动部署
-
-
+- mysql
+- kafka
 
 
 
+#### 3.实战helm部署
+
+- mysql
+- kafka
+- redis
 
 
 
+#### 4.对比总结helm特性：
 
-### 新一代微服务框架 Service Mesh
-
-- [古典、SOA、传统、K8S、ServiceMesh](https://www.cnblogs.com/lovecindywang/p/10358064.html)
-
-  [落地三年，两次架构升级，网易的 Service Mesh 实践之路](https://baijiahao.baidu.com/s?id=1662948895773606564&wfr=spider&for=pc)
-
-  [Service Mesh 初体验](https://baijiahao.baidu.com/s?id=1648785411796124823&wfr=spider&for=pc)
-
-  [全方位详解Service Mesh（服务网格）](https://blog.csdn.net/cenmeng8703/article/details/100959467)
-
-  
-
-
+- 查找并使用流行的软件，将其打包为 Helm Charts，以便在 Kubernetes 中运行
+- 以 Helm Charts 的形式共享您自己的应用程序
+- 为您的 Kubernetes 应用程序创建可复制的构建
+- 智能地管理您的 Kubernetes 清单文件
+- 管理 Helm 包的发行版
 
 
 

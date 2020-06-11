@@ -81,7 +81,7 @@
 
 
 
-### 号称下一代微服务框架 Service Mesh
+### 新一代微服务框架 Service Mesh
 
 - [古典、SOA、传统、K8S、ServiceMesh](https://www.cnblogs.com/lovecindywang/p/10358064.html)
 

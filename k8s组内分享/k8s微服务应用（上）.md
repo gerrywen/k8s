@@ -44,7 +44,7 @@
 
 
 
-#### 知识点5：Service
+#### [知识点5：Service](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/06/1.Kubernetes%20Service.md)
 
 
 
@@ -56,7 +56,9 @@
 
 
 
-#### [知识点8：Ingress](https://www.kubernetes.org.cn/1885.html)
+#### [知识点8：Ingress](https://github.com/gerrywen/k8s/blob/master/Kubernetes%E6%95%99%E7%A8%8B/06/2.Kubernetes%20Ingress.md)
+
+- https://www.kubernetes.org.cn/1885.html
 
 
 

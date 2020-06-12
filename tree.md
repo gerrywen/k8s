@@ -29,8 +29,20 @@
     - [2-2.创作Helm Chart微服务](/helm/2-2)
     - [3-1.Helm chart语法](/helm/3-1)
 - istio入门教程
-    - [1-1.安装istio.md](/istio/1-1)
-    - [2-1.快速入门.md](/istio/2-1)   
+    - [1-1.安装istio](/istio/1-1)
+    - [2-1.快速入门](/istio/2-1)   
+    - [安装]
+      - [更多指南]
+        - [设置 Sidecar](/istio/setup/additional-setup/sidecar-injection)
+    - [任务]
+      - [流量管理]
+        - [Ingress]
+          - [Ingress Gateway](/istio/tasks/traffic-management/ingress/ingress-control)
+    - [示例]
+      - [Bookinfo 应用](/istio/examples/bookinfo)
+    - [参考]
+      - [命令]
+        - [istioctl](/istio/reference/commands/istioctl)
 - git协作工具
     - [gitlab的Git团队协作流程](/git/gitlab-Git-use)     
 - k8s组内分享
@@ -38,4 +50,4 @@
     - [聊聊 Swarm Kubernetes Mesos](/share/3-1.Swarm-Kubernetes-Mesos) 
     - [k8s微服务应用（上）](/share/2-1.k8s) 
     - [k8s微服务应用（下）](/share/2-2.k8s)
-     
+    

@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
   doc: {
-    name: "Gerry Kubernetes", //文档名称
+    name: "Kubernetes", //文档名称
     description: "", //文档的描述
     version: "1.0.0", //文档的版本
     dir: "", //文档的目录

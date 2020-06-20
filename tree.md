@@ -36,13 +36,27 @@
         - [设置 Sidecar](/istio/setup/additional-setup/sidecar-injection)
     - [任务]
       - [流量管理]
+        - [配置请求路由](/istio/tasks/traffic-management/request-routing)
+        - [故障注入](/istio/tasks/traffic-management/fault-injection)
+        - [流量转移](/istio/tasks/traffic-management/traffic-shifting)
+        - [TCP 流量转移](/istio/tasks/traffic-management/tcp-traffic-shifting)
+        - [设置请求超时](/istio/tasks/traffic-management/request-timeouts)
+        - [熔断](/istio/tasks/traffic-management/circuit-breaking)
+        - [镜像](/istio/tasks/traffic-management/mirroring)
         - [Ingress]
           - [Ingress Gateway](/istio/tasks/traffic-management/ingress/ingress-control)
+          - [Ingress (Kubernetes)](/istio/tasks/traffic-management/ingress/kubernetes-ingress)
+          - [安全网关](/istio/tasks/traffic-management/ingress/secure-ingress)
+        - [egress]
+          - [访问外部服务](/istio/tasks/traffic-management/egress/egress-control)
     - [示例]
       - [Bookinfo 应用](/istio/examples/bookinfo)
     - [参考]
       - [命令]
         - [istioctl](/istio/reference/commands/istioctl)
+    - [博客]
+      - [2017 年的博客文章]
+        - [使用 Istio 进行金丝雀部署](/istio/blog/2017/0.1-canary)
 - git协作工具
     - [gitlab的Git团队协作流程](/git/gitlab-Git-use)     
 - k8s组内分享

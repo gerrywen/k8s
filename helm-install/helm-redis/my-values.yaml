@@ -1,0 +1,12 @@
+auth: true
+redisPassword: "redis1"
+#(仅限当replicas > worker node 节点数时修改)
+hardAntiAffinity: false  
+haproxy:
+  service:
+    type: NodePort
+  persistence:
+    storageClass: "local-storage"
+persistentVolume:
+  storageClass: "local-storage"
+

@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-ingress
+  namespace: prometheus
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+spec:
+  rules:
+    - host: www.prometheus.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: prometheus-prometheus-server
+            servicePort: 9090
+    
+    - host: alertmanager.prometheus.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: prometheus-prometheus-alertmanager
+            servicePort: 9093
+
+    - host: pushgateway.prometheus.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: prometheus-prometheus-pushgateway
+            servicePort: 9091

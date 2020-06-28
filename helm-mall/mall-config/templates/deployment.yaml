@@ -32,10 +32,17 @@ spec:
           volumeMounts:
             - mountPath: /mall/config
               name: config-data
+              {{- if .Values.persistence.subPath }}
+              subPath: {{ .Values.persistence.subPath }}
+              {{- end }}
       volumes:
         - name: config-data
-          hostPath:
-            path: /tmp/mall/config
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "mall-config.fullname" .) }}
+        {{- else }}
+          emptyDir: {}
+        {{- end -}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -8,6 +8,8 @@
     - [2-4.Kubernetes Replica Sets](/kubernetes/02/2-4.Kubernetes-Replica-Sets)
     - [2-5.Kubernetes Labels 和 Selectors](/kubernetes/02/2-5.Kubernetes-Labels-Selectors)
     - [2-6.Kubernetes Annotations](/kubernetes/02/2-6.Kubernetes-Annotations)
+    - [3-1.harbor](/kubernetes/03/3-1.harbor)
+    - [3-2.Kubernetes-install](/kubernetes/03/3-2.Kubernetes-install)
     - [6-1.Kubernetes Service](/kubernetes/06/6-1.Kubernetes-Service)
     - [6-2.Kubernetes Ingress](/kubernetes/06/6-2.Kubernetes-Ingress)
     - [7-3.Kubernetes - volume](/kubernetes/7-3.Kubernetes-volume)

@@ -1,0 +1,18 @@
+image:
+  registry: docker.io
+  repository: bitnami/mysql
+  tag: 8.0.19-debian-10-r0
+  debug: false
+root:
+  password: root
+  forcePassword: true
+replication:
+  enabled: false
+master:
+  persistence:
+    storageClass: "local-storage"
+    size: 2Gi
+service:
+  type: NodePort
+  port: 3306
+  nodePort: 33060

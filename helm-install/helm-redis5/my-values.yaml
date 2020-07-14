@@ -1,0 +1,15 @@
+image:
+  registry: docker.io
+  repository: bitnami/redis
+  tag: 5.0.7-debian-10-r32
+  pullPolicy: IfNotPresent
+usePassword: false
+password: ""
+master:
+  persistence:
+    storageClass: "local-storage"
+    size: 6Gi
+slave:
+  persistence:
+    storageClass: "local-storage"
+    size: 6Gi

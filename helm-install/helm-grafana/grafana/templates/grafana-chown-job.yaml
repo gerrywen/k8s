@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app: {{ template "grafana.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+  name: {{ template "grafana.server.fullname" . }}-chmod-script
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: grafana-chown
+          command: ["chown", "-R", "472:472", "/var/lib/grafana"]
+          image: "{{ .Values.busybox.image}}:{{ .Values.busybox.tag }}"
+          imagePullPolicy: {{ default "IfNotPresent" .Values.busybox.imagePullPolicy }}
+          volumeMounts:
+            - name: storage
+              subPath: grafana
+              mountPath: /var/lib/grafana
+      volumes:
+        - name: storage
+      {{- if .Values.server.persistentVolume.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ if .Values.server.persistentVolume.existingClaim }}{{ .Values.server.persistentVolume.existingClaim }}{{- else }}{{ template "grafana.server.fullname" . }}{{- end }}
+      {{- else }}
+          emptyDir: {}
+      {{- end -}}

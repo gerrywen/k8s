@@ -49,6 +49,7 @@
           - [Ingress Gateway](/istio/tasks/traffic-management/ingress/ingress-control)
           - [Ingress (Kubernetes)](/istio/tasks/traffic-management/ingress/kubernetes-ingress)
           - [安全网关](/istio/tasks/traffic-management/ingress/secure-ingress)
+          - [无 TLS 终止的 Ingress Gateway](/istio/tasks/traffic-management/ingress/ingress-sni-passthrough)
         - [egress]
           - [访问外部服务](/istio/tasks/traffic-management/egress/egress-control)
     - [示例]

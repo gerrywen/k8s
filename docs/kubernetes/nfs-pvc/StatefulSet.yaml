@@ -1,0 +1,55 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: nginx
+  namespace: nginx-test
+  labels:
+    app: statefulset
+spec:
+  serviceName: nginx-svc-headless
+  replicas: 4
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: hub.gerrywen.com/library/nginx:1.9.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: nginx
+          volumeMounts:
+            - name: nginxpath
+              mountPath: /etc/nginx/conf.d
+  volumeClaimTemplates:
+    - metadata:
+        name: nginxpath
+        annotations:
+          volume.beta.kubernetes.io/storage-class: "managed-nfs-storage" #这里managed-nfs-storage就是我们创建的storageclass的name
+      spec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc-headless
+  namespace: nginx-test
+  labels:
+    app: statefulset
+spec:
+  ports:
+    - port: 80
+      name: nginx
+  clusterIP: None
+  selector:
+    app: statefulset

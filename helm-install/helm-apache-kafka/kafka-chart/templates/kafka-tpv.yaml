@@ -1,0 +1,129 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: kafka-{{ .Values.clusterName }}-config
+data:
+  # example of a simple property defined using --from-literal
+  # CLUSTER_NAME: {{ .Values.clusterName }}
+  ZK_CLUSTER: "{{ .Values.zkCluster }}"
+  KAFKA_MANAGER_IP: {{ .Values.managerIp }}
+  KAFKA_VERSION: {{ .Values.version }}
+  CLUSTER_NAME: {{ .Values.clusterName }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-{{ .Values.clusterName }}-headless
+  labels:
+    #app: kafka-{{ .Values.clusterName }}
+    kafka-app: kafka
+spec:
+  ports:
+    - port: 9092
+      name: broker9092
+  clusterIP: None
+  #clusterIP: LoadBalancer
+  selector:
+    #app: kafka-{{ .Values.clusterName }}
+    kafka: kafka-{{ .Values.clusterName }}
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: kafka-{{ .Values.clusterName }}-pdb
+spec:
+  selector:
+    matchLabels:
+      #app: kafka-{{ .Values.clusterName }}
+      kafka: kafka-{{ .Values.clusterName }}
+  minAvailable: 1
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: kafka-{{ .Values.clusterName }}
+spec:
+  serviceName: kafka-{{ .Values.clusterName }}-headless
+  replicas: {{ .Values.kafkaReplicaCount }}
+  template:
+    metadata:
+      labels:
+        #app: kafka-{{ .Values.clusterName }}
+        kafka: kafka-{{ .Values.clusterName }}
+        {{ .Values.logLabel }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: "app"
+                      operator: In
+                      values:
+                        - kafka-{{ .Values.clusterName }}
+                topologyKey: "kubernetes.io/hostname"
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: "app"
+                      operator: In
+                      values:
+                        - zk-{{ .Values.clusterName }}-kafka-headless
+                topologyKey: "kubernetes.io/hostname"
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: k8skafka
+          imagePullPolicy: Always
+          image: {{ .Values.dockerRegistry }}/{{ .Values.kafkaTag }}
+          resources:
+            requests:
+              memory: {{ .Values.kafkaRequestMem }}
+              cpu: {{ .Values.kafkaRequestCpu }}
+            limits:
+              memory: {{ .Values.kafkaLimitMem }}
+              cpu: {{ .Values.kafkaLimitCpu }}
+          ports:
+            - containerPort: 9092
+              name: broker9092
+          env:
+            - name: HEADLESS_SERVICE
+              value: kafka-{{ .Values.clusterName }}-headless
+            - name: KAFKA_HEAP_OPTS
+              #value: "-Xmx512M -Xms512M"
+              #value: "-Xmx{{ trimSuffix "i" .Values.kafkaRequestMem }} -Xms{{ trimSuffix "i" .Values.kafkaRequestMem }}"
+              value: {{ .Values.jvmOpts }}
+            - name: KAFKA_OPTS
+              value: "-Dlogging.level=INFO"
+          envFrom:
+            - configMapRef:
+                name: kafka-{{ .Values.clusterName }}-config
+          command: ["/bin/sh", "-c"]
+          #args: ["sed  s/cluster.local/ks8cloud.com/g /etc/hosts > /tmp/xhosts;cat /tmp/xhosts; cat /tmp/xhosts > /etc/hosts; "]
+          args: ["exec kafka-server-start.sh /opt/kafka/config/server.properties --override broker.id=${HOSTNAME##*-} \
+        --override zookeeper.connect=$(ZK_CLUSTER) --override log.dirs={{ .Values.kafkaLogDirs }} "]
+          volumeMounts:
+            - name: kafka-{{ .Values.clusterName }}
+              mountPath: /var/lib/kafka
+          #readinessProbe:
+            #exec:
+              #command:
+              #- sh
+              #- -c
+              #- "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server=localhost:9092"
+      imagePullSecrets:
+        - name: {{ .Values.imagePullKey }}
+  volumeClaimTemplates:
+    - metadata:
+        name: kafka-{{ .Values.clusterName }}
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .Values.kafkaVolumeSize }}
+        storageClassName: {{ .Values.storageClass }}

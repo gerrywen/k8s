@@ -1,0 +1,15 @@
+replicas: 3
+image: "hub.gerrywen.com/library/kafka_2.12"
+imageTag: "2.2.2"
+imagePullPolicy: "IfNotPresent"
+tolerations:
+- key: node-role.kubernetes.io/master
+  operator: Exists
+  effect: NoSchedule
+- key: node-role.kubernetes.io/master
+  operator: Exists
+  effect: PreferNoSchedule
+persistence:
+  enabled: true
+  storageClass: managed-nfs-storage
+  size: 10Gi

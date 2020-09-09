@@ -1,0 +1,16 @@
+replicaCount: 3
+image:
+  repository: hub.gerrywen.com/library/zookeeper     # Container image repository for zookeeper container.
+  tag: 3.5.5                # Container image tag for zookeeper container.
+  pullPolicy: IfNotPresent  # Image pull criteria for zookeeper container.
+tolerations:
+- key: node-role.kubernetes.io/master
+  operator: Exists
+  effect: NoSchedule
+- key: node-role.kubernetes.io/master
+  operator: Exists
+  effect: PreferNoSchedule
+persistence:
+  enabled: true
+  storageClass: managed-nfs-storage
+  size: 5Gi

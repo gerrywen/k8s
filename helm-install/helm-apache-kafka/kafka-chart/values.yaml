@@ -1,0 +1,24 @@
+# Default values for elasticsearch-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+storageClass: managed-nfs-storage
+dockerRegistry: hub.gerrywen.com/library
+clusterName: kafka
+imagePullKey: ksyunregistrykey
+
+
+kafkaTag: kafka_2.12:2.2.2
+kafkaVolumeSize: 12Gi
+kafkaRequestCpu: 500m
+kafkaRequestMem: 512Mi
+kafkaLimitMem: 512Mi
+kafkaLimitCpu: 500m
+kafkaReplicaCount: 3
+kafkaLogDirs: /var/lib/kafka/logs
+zkCluster: zookeeper-0.zookeeper-headless.kafka.svc.cluster.local:2181,zookeeper-1.zookeeper-headless.kafka.svc.cluster.local:2181,zookeeper-2.zookeeper-headless.kafka.svc.cluster.local:2181
+logLabel: "app: dg-log-server-kafka-test"
+# managerIP是kafka-manager的域名或者ip,域名请如果和KAFKA集群不在相同namespace请指定
+managerIp: "kafka-manager:9000"
+version: 2.2.2
+jvmOpts: "-Xmx512M -Xms512M"
